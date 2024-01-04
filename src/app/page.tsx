@@ -12,14 +12,14 @@ export default function Home() {
   return (
     <main className="gap-8 flex flex-col items-center justify-between">
       <section
-        className="md:px-32 self-stretch py-6 flex flex-col bg-right bg-cover items-left justify-between lg:justify-normal h-svh"
+        className="md:px-32 self-stretch py-6 flex flex-col bg-[90%] md:bg-right bg-cover items-left justify-between lg:justify-normal h-svh"
         style={{ backgroundImage: `url(${BG2.src})` }}
       >
         <div className="px-2 pb-4">
           <Logo className="w-10 h-10" />
         </div>
         <div className="flex flex-col flex-1 justify-end lg:justify-center">
-          <div className="flex justify-self-center flex-col justify-center items-center lg:items-start h-fit text-hero bg-green-100/75 md:rounded-lg rounded-none p-10 lg:p-0 lg:bg-transparent">
+          <div className="flex flex-col justify-center items-center lg:items-start h-fit text-hero bg-green-100/75 md:rounded-lg rounded-none p-10 lg:p-0 lg:bg-transparent">
             <h1 className="text-6xl flex flex-col text-center lg:text-left gap-6 justify-center pb-6 pt-8 leading-none lg:w-1/3">
               Be good to yourself
               <p className="text-sm leading-loose">
