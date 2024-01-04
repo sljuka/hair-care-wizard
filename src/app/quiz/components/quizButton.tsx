@@ -10,11 +10,7 @@ export const QuizButton = (props: QuizType) => {
   return (
     <>
       {quizActive && (
-        <div
-          autoFocus
-          tabIndex={0}
-          className="w-screen h-screen fixed bg-white z-10 top-0 left-0 overflow-auto"
-        >
+        <div className="w-screen h-screen fixed bg-white z-10 top-0 left-0 overflow-auto">
           <Quiz {...props} />
         </div>
       )}
