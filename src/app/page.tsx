@@ -6,6 +6,7 @@ import { Logo } from "./Logo";
 import { TherapySection } from "@/components/TherapySection/TherapySection";
 import { TherapySectionDetails } from "@/components/TherapySection/TherapySectionDetails";
 import { Footer } from "@/components/Footer/Footer";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -29,9 +30,12 @@ export default function Home() {
               your wellness. From top to bottom, inside and out.
             </p>
           </h1>
-          <button className="tracking-wider text-sm px-5 py-3 text-white bg-sonAccent rounded-lg hover:opacity-80 active:shadow-lg uppercase">
+          <Link
+            href="/quiz"
+            className="tracking-wider text-sm px-5 py-3 text-white bg-sonAccent rounded-lg hover:opacity-80 active:shadow-lg uppercase"
+          >
             Take the quiz
-          </button>
+          </Link>
         </div>
       </section>
 
