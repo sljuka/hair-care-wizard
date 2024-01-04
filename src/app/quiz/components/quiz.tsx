@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Quiz as QuizType } from "../types";
 import { QuizQuiestion } from "./quizQuestion";
 import { QuizResult } from "./quizResult";
@@ -18,6 +18,10 @@ export const Quiz = ({ questions }: QuizType) => {
     setActiveStep((p) => Math.max(0, p - 1));
   };
 
+  useEffect(() => {
+    document.getElementById("quiz-container")?.focus();
+  }, []);
+
   const stepMap = React.useMemo(
     () =>
       questions.reduce<Record<number, string>>((acc, questionData, index) => {
@@ -32,14 +36,18 @@ export const Quiz = ({ questions }: QuizType) => {
   if (Object.keys(answers).length >= questions.length)
     return <QuizResult questions={questions} answers={answers} />;
 
-  return questions.map((questionData) => (
-    <QuizQuiestion
-      {...questionData}
-      key={questionData.question}
-      isStepActive={stepMap[activeStep] === questionData.question}
-      onSubmit={submitAnswer}
-      goBack={goBack}
-      showBack={activeStep > 0}
-    />
-  ));
+  return (
+    <div id="quiz-container" tabIndex={0}>
+      {questions.map((questionData) => (
+        <QuizQuiestion
+          {...questionData}
+          key={questionData.question}
+          isStepActive={stepMap[activeStep] === questionData.question}
+          onSubmit={submitAnswer}
+          goBack={goBack}
+          showBack={activeStep > 0}
+        />
+      ))}
+    </div>
+  );
 };

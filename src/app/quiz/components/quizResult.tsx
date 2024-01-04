@@ -45,12 +45,6 @@ const Rejection = () => (
     Unfortunately, we are unable to prescribe this medication for you. This is
     because finasteride can alter the PSA levels, which maybe used to monitor
     for cancer. You should discuss this further with your GP or specialist if
-    you would still like this medication.{" "}
-    <Link
-      className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-      href="/"
-    >
-      Back to site
-    </Link>
+    you would still like this medication.
   </h1>
 );

@@ -6,9 +6,27 @@ import { Logo } from "./Logo";
 import { TherapySection } from "@/components/TherapySection/TherapySection";
 import { TherapySectionDetails } from "@/components/TherapySection/TherapySectionDetails";
 import { Footer } from "@/components/Footer/Footer";
-import Link from "next/link";
+import { Quiz as QuizType } from "./quiz/types";
+import { QuizButton } from "./quiz/components/quizButton";
 
-export default function Home() {
+async function getQuizData(): Promise<QuizType> {
+  const res = await fetch(
+    "https://manual-case-study.herokuapp.com/questionnaires/972423.json"
+  );
+  // The return value is *not* serialized
+  // You can return Date, Map, Set, etc.
+
+  if (!res.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+
+  return res.json();
+}
+
+const Home = async () => {
+  const quizData = await getQuizData();
+
   return (
     <main className="gap-8 flex flex-col items-center justify-between">
       <section
@@ -27,12 +45,8 @@ export default function Home() {
                 to your wellness. From top to bottom, inside and out.
               </p>
             </h1>
-            <Link
-              href="/quiz"
-              className="tracking-wider text-sm px-5 py-3 text-white bg-sonAccent rounded-lg hover:opacity-80 active:shadow-lg uppercase"
-            >
-              Take the quiz
-            </Link>
+
+            <QuizButton {...quizData} />
           </div>
         </div>
       </section>
@@ -64,4 +78,6 @@ export default function Home() {
       <Footer />
     </main>
   );
-}
+};
+
+export default Home;
